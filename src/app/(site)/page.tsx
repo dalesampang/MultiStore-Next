@@ -10,7 +10,7 @@ export const metadata = {
     "Philippines",
     "Meta AI eyewear",
   ],
-  alternates: { canonical: "https://www.facebook.com/antiparamanila" },
+  alternates: { canonical: "https://antiparamanila.store/" },
   openGraph: {
     url: "https://antiparamanila.store",
     type: "website",
