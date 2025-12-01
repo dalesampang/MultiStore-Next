@@ -1,58 +1,58 @@
 export const fixedFeatures = [
   {
-    id: "4a9c406c-87a3-4f57-86d6-b0cc52a3e76e",
+    id: "bd0364f2-48ee-4101-97bf-c4e303b6cfb9",
     title: "Meta AI",
     description:
-      "Meta AI works with Garmin* devices and other fitness tracking apps to help you stay motivated and on track with your goals. You can also get activity summaries in the Meta AI app to elevate your performance.\n",
+      "Athletes have questions. Meta AI has answers. Meta AI helps athletes get the most out of every moment. With “Hey Meta” or just a tap, get answers during practice, check tides en route, or discover local hikes—all hands-free. From getting ready to getting out there, Meta AI helps you take every aspect of your game to the max.\n",
     mediaUrl:
-      "https://res.cloudinary.com/djws2m6eo/image/upload/v1764614768/products/features/ktqaogxntyhuoc2a94qu.png",
+      "https://res.cloudinary.com/djws2m6eo/image/upload/v1764615646/products/features/tpehctm12dkxt5nx8qal.webp",
   },
   {
-    id: "f195a52d-cb3a-4f0c-96fa-e08529158018",
+    id: "91f90f35-e6da-4f7b-a630-ae7017cad84c",
     title: "Hands-free capture",
     description:
-      "Oakley Meta Vanguard features a centered, ultra-wide 12MP camera so you can capture mind-blowing moments in 3K from your authentic POV, hands-free.\n",
+      "Capture the action as it happens with Oakley Meta HSTN's hands-free 12 MP camera. Take videos or photos from your unique POV to get all your highlights. With just a “Hey Meta” or a tap, you can always get the shot. From epic hikes to casual hangouts, you’ll never miss a moment.\n",
     mediaUrl:
-      "https://res.cloudinary.com/djws2m6eo/image/upload/v1764614794/products/features/feilj7wrc73shbs5ovoo.webp",
+      "https://res.cloudinary.com/djws2m6eo/image/upload/v1764615658/products/features/jc0kapxg68z97xuqp0go.webp",
   },
   {
-    id: "1a20dd6a-fe43-4e7d-a53f-e03c47fb4a05",
+    id: "4a2220c3-5ad2-403f-b866-a06b311eee21",
     title: "Immersive audio",
     description:
-      "The powerful open-ear speakers built into the temples of the glasses give athletes epic, immersive audio quality in different conditions.\n",
+      "The open-ear design of Oakley Meta HSTN lets you enjoy your favorite music with speakers built right into the frames. Listen to Spotify, Apple Music, iHeart and more with just a “Hey Meta” or a tap. Queue up your favorite playlist, podcast, live radio station and more, hands-free.\n",
     mediaUrl:
-      "https://res.cloudinary.com/djws2m6eo/image/upload/v1764614806/products/features/rodjtbtnsl4ktryz4jg1.webp",
+      "https://res.cloudinary.com/djws2m6eo/image/upload/v1764615670/products/features/yvtvwuxpmndkrz1kmxqp.webp",
   },
   {
-    id: "d0d8d3b4-8ffd-43fc-a38f-072db8ad4fa2",
-    title: "Activity sharing",
+    id: "d092f923-ba8b-48c7-ab7b-9152e6835ff0",
+    title: "Hands-free communication",
     description:
-      "Add your performance metrics from Garmin devices or Strava to videos and photos to share with your family, friends and community in more dynamic ways.\n",
+      "Stay connected like never before with Oakley Meta HSTN. Take a call right from your glasses. Send and receive text and voice messages hands-free. The speakers feature an open-ear design, so you can stay engaged on your call without losing touch with the world around you. You can even video call and share your unique POV, thanks to the built-in camera.\n",
     mediaUrl:
-      "https://res.cloudinary.com/djws2m6eo/image/upload/v1764614820/products/features/ayj8lvyhhsyj9e7ct7im.webp",
+      "https://res.cloudinary.com/djws2m6eo/image/upload/v1764615684/products/features/vt3vo8nrozlo3ylzyziz.webp",
   },
   {
-    id: "fa550e99-ab29-48c8-8969-33c73a0aed39",
-    title: "Oakley Prizm lens technology",
+    id: "dc8f66f1-c423-4f77-bd01-c0e3aca2ebd8",
+    title: "Transitions Amethyst lenses",
     description:
-      "Oakley Meta glasses come with Oakley Prizm™ lenses, which fine-tune vision and optimize contrast across light and weather conditions.\n",
+      "Transitions lenses darken in seconds, transforming from clear or tinted indoors to dark outdoors so you can feel confident in your glasses all day long.\n",
     mediaUrl:
-      "https://res.cloudinary.com/djws2m6eo/image/upload/v1764614837/products/features/ggpmaxoz9lmfuqkkdxlq.webp",
+      "https://res.cloudinary.com/djws2m6eo/image/upload/v1764615699/products/features/fjc4k7x5deuimxghpr8c.webp",
   },
   {
-    id: "f288b166-bd58-4cb1-a605-9c008dff172d",
+    id: "de7fef7a-6a0a-4ea8-9796-afa86ab7de58",
     title: "Meta AI app",
     description:
-      "Use the Meta AI app to manage your glasses, customize settings, share photos and interact with your Meta AI assistant. Discover new features and tips from other users all in one place. The Meta AI app is required to support your glasses experience.\n",
+      "Manage your Oakley Meta glasses and customize settings, import and share photos, and interact with the Meta AI assistant on both your glasses and the app. Learn about new features and see how others are getting the most out of Meta AI through the Discover feed.\nThe Meta AI app (formerly known as the Meta View app) is required to support your glasses experience.\n",
     mediaUrl:
-      "https://res.cloudinary.com/djws2m6eo/image/upload/v1764614852/products/features/uz4a1cpykjwfce4sxap5.webp",
+      "https://res.cloudinary.com/djws2m6eo/image/upload/v1764615717/products/features/f3wngqvvaiilbg81xhkk.webp",
   },
   {
-    id: "32b9b2da-33ae-437a-81d1-04fb1fc61fd0",
-    title: "Battery life",
+    id: "18e3be35-d344-4390-8b41-25dce1e8963f",
+    title: "Charging case",
     description:
-      "A fully charged pair of Oakley Meta Vanguard glasses can last up to 6 hours of continuous audio playback and 9 hours of typical use. You can fully charge Oakley Meta Vanguard in 75 minutes. The charging case can provide an additional 36 hours of charging on the go.",
+      "Each pair of Oakley Meta glasses comes with a charging case that can provide up to 48 hours of charging on the go. The case can be fully charged in 3.5 hours using a USB-C cable.",
     mediaUrl:
-      "https://res.cloudinary.com/djws2m6eo/image/upload/v1764614866/products/features/iu1xdlct8lkkbdxefezx.webp",
+      "https://res.cloudinary.com/djws2m6eo/image/upload/v1764615731/products/features/jgxximwaihaf8bwfb4m4.webp",
   },
 ];

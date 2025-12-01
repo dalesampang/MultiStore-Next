@@ -62,7 +62,7 @@ const ProductItem = ({ item }: { item: Product }) => {
 
         <h2 className="flex justify-center font-medium text-dark ease-out text-custom-1 duration-200  hover:text-blue mb-1.5">
           <Link href={`/ai-glasses/${item.slug}`}>
-            {item.name} {item.version ?? "-"} {item.version}
+            {item.name} {item.version && `- ${item.version}`}
           </Link>
         </h2>
         <span className="flex justify-center gap-2 font-medium text-lg">
