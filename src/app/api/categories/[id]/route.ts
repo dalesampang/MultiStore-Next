@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 // GET one category by id
 export async function GET(
   req: Request,
-  context: { params: { id: Promise<{ id: string }> } }
+  context: { params: Promise<{ id: string }> }
 ) {
   const { id } = await context.params;
   const category = await prisma.category.findUnique({
