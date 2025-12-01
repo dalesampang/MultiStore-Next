@@ -24,52 +24,54 @@ const ProductItem = ({ item }: { item: Product }) => {
           <OrderNowButton slug={item.slug} />
         </div>
       </div>
-
-      <div className="flex items-center gap-2.5 mb-2">
-        <div className="flex items-center gap-1">
-          <Image
-            src="/images/icons/icon-star.svg"
-            alt="star icon"
-            width={14}
-            height={14}
-          />
-          <Image
-            src="/images/icons/icon-star.svg"
-            alt="star icon"
-            width={14}
-            height={14}
-          />
-          <Image
-            src="/images/icons/icon-star.svg"
-            alt="star icon"
-            width={14}
-            height={14}
-          />
-          <Image
-            src="/images/icons/icon-star.svg"
-            alt="star icon"
-            width={14}
-            height={14}
-          />
-          <Image
-            src="/images/icons/icon-star.svg"
-            alt="star icon"
-            width={14}
-            height={14}
-          />
+      <div className="gap-2.5 mb-2">
+        <div className="flex justify-center gap-2.5 mb-2">
+          <div className="flex justify-center gap-1">
+            <Image
+              src="/images/icons/icon-star.svg"
+              alt="star icon"
+              width={14}
+              height={14}
+            />
+            <Image
+              src="/images/icons/icon-star.svg"
+              alt="star icon"
+              width={14}
+              height={14}
+            />
+            <Image
+              src="/images/icons/icon-star.svg"
+              alt="star icon"
+              width={14}
+              height={14}
+            />
+            <Image
+              src="/images/icons/icon-star.svg"
+              alt="star icon"
+              width={14}
+              height={14}
+            />
+            <Image
+              src="/images/icons/icon-star.svg"
+              alt="star icon"
+              width={14}
+              height={14}
+            />
+          </div>
         </div>
+
+        <h2 className="flex justify-center font-medium text-dark ease-out text-custom-1 duration-200  hover:text-blue mb-1.5">
+          <Link href={`/ai-glasses/${item.slug}`}>
+            {item.name}-{item.version}
+          </Link>
+        </h2>
+        <span className="flex justify-center gap-2 font-medium text-lg">
+          <span className="text-dark">
+            ₱{item.variants[0].price.toLocaleString("en-PH")}
+          </span>
+          {/* <span className="text-dark-4 line-through">${item.price}</span> */}
+        </span>
       </div>
-
-      <h3 className="font-medium text-dark ease-out duration-200 hover:text-blue mb-1.5">
-        <Link href={`/ai-glasses/${item.slug}`}>
-          {item.name}-{item.version}
-        </Link>
-      </h3>
-
-      <span className="flex items-center gap-2 font-medium text-lg">
-        <span className="text-dark">₱{item.variants[0].price}</span>
-        {/* <span className="text-dark-4 line-through">${item.price}</span> */}
-      </span>
     </div>
   );
 };
