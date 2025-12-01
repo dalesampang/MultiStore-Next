@@ -2,29 +2,26 @@
 
 import { useState } from "react";
 
-const CategoryItem = ({ category }) => {
-  const [selected, setSelected] = useState(false);
+const CategoryItem = ({ category, selectedCategory, onSelect }) => {
+  const selected = selectedCategory === category.id;
   return (
     <button
       className={`${
         selected && "text-blue"
       } group flex items-center justify-between ease-out duration-200 hover:text-blue `}
-      onClick={() => setSelected(!selected)}
-    >
+      onClick={() => onSelect(category.id)}>
       <div className="flex items-center gap-2">
         <div
           className={`cursor-pointer flex items-center justify-center rounded w-4 h-4 border ${
             selected ? "border-blue bg-blue" : "bg-white border-gray-3"
-          }`}
-        >
+          }`}>
           <svg
             className={selected ? "block" : "hidden"}
             width="10"
             height="10"
             viewBox="0 0 10 10"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+            xmlns="http://www.w3.org/2000/svg">
             <path
               d="M8.33317 2.5L3.74984 7.08333L1.6665 5"
               stroke="white"
@@ -41,16 +38,20 @@ const CategoryItem = ({ category }) => {
       <span
         className={`${
           selected ? "text-white bg-blue" : "bg-gray-2"
-        } inline-flex rounded-[30px] text-custom-xs px-2 ease-out duration-200 group-hover:text-white group-hover:bg-blue`}
-      >
+        } inline-flex rounded-[30px] text-custom-xs px-2 ease-out duration-200 group-hover:text-white group-hover:bg-blue`}>
         {category.products}
       </span>
     </button>
   );
 };
 
-const CategoryDropdown = ({ categories }) => {
+const CategoryDropdown = ({ categories, onCategorySelect }) => {
   const [toggleDropdown, setToggleDropdown] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const handleSelect = (catId: string) => {
+    setSelectedCategory(catId);
+    onCategorySelect(catId); // notify parent (product list page)
+  };
 
   return (
     <div className="bg-white shadow-1 rounded-lg">
@@ -61,23 +62,20 @@ const CategoryDropdown = ({ categories }) => {
         }}
         className={`cursor-pointer flex items-center justify-between py-3 pl-6 pr-5.5 ${
           toggleDropdown && "shadow-filter"
-        }`}
-      >
+        }`}>
         <p className="text-dark">Category</p>
         <button
           aria-label="button for category dropdown"
           className={`text-dark ease-out duration-200 ${
             toggleDropdown && "rotate-180"
-          }`}
-        >
+          }`}>
           <svg
             className="fill-current"
             width="24"
             height="24"
             viewBox="0 0 24 24"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+            xmlns="http://www.w3.org/2000/svg">
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -93,10 +91,14 @@ const CategoryDropdown = ({ categories }) => {
       <div
         className={`flex-col gap-3 py-6 pl-6 pr-5.5 ${
           toggleDropdown ? "flex" : "hidden"
-        }`}
-      >
+        }`}>
         {categories.map((category, key) => (
-          <CategoryItem key={key} category={category} />
+          <CategoryItem
+            key={key}
+            category={category}
+            selectedCategory={selectedCategory}
+            onSelect={handleSelect}
+          />
         ))}
       </div>
     </div>

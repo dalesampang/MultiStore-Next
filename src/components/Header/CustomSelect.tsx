@@ -1,8 +1,12 @@
+"use client";
+import { useRouter } from "next/navigation";
+
 import React, { useState, useEffect } from "react";
 
 const CustomSelect = ({ options }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(options[0]);
+  const router = useRouter();
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -11,6 +15,7 @@ const CustomSelect = ({ options }) => {
   const handleOptionClick = (option) => {
     setSelectedOption(option);
     toggleDropdown();
+    router.push(`/categories/${option.slug}`);
   };
 
   useEffect(() => {
@@ -31,24 +36,24 @@ const CustomSelect = ({ options }) => {
   }, []);
 
   return (
-    <div className="dropdown-content custom-select relative" style={{ width: "200px" }}>
+    <div
+      className="dropdown-content custom-select relative"
+      style={{ width: "220px" }}>
       <div
         className={`select-selected whitespace-nowrap ${
           isOpen ? "select-arrow-active" : ""
         }`}
-        onClick={toggleDropdown}
-      >
+        onClick={toggleDropdown}>
         {selectedOption.label}
       </div>
       <div className={`select-items ${isOpen ? "" : "select-hide"}`}>
-        {options.slice(1, -1).map((option, index) => (
+        {options.slice(0, -1).map((option, index) => (
           <div
             key={index}
             onClick={() => handleOptionClick(option)}
             className={`select-item ${
               selectedOption === option ? "same-as-selected" : ""
-            }`}
-          >
+            }`}>
             {option.label}
           </div>
         ))}

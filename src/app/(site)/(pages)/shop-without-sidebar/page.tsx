@@ -9,11 +9,7 @@ export const metadata: Metadata = {
 };
 
 const ShopWithoutSidebarPage = () => {
-  return (
-    <main>
-      <ShopWithoutSidebar />
-    </main>
-  );
+  return <main></main>;
 };
 
 export default ShopWithoutSidebarPage;

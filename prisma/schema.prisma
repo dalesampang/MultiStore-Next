@@ -1,0 +1,149 @@
+datasource db {
+  provider = "postgresql"
+}
+
+// Define custom output path for generated Prisma Client
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Store {
+  id              Int                    @id @default(autoincrement())
+  name            String
+  slug            String                 @unique
+  messengerPageId String?
+  products        Product[] // back relation
+  categories      Category[]
+  blogPosts       BlogPost[]
+  seoSettings     SEOSettings[]
+  logs            MessengerRedirectLog[]
+  analytics       Analytics[]
+  createdAt       DateTime               @default(now())
+}
+
+model Category {
+  id       Int       @id @default(autoincrement())
+  storeId  Int
+  store    Store     @relation(fields: [storeId], references: [id])
+  name     String
+  imageUrl  String?
+  slug     String    @unique
+  products Product[]
+}
+
+model Product {
+  id          Int                    @id @default(autoincrement())
+  storeId     Int
+  store       Store                  @relation(fields: [storeId], references: [id])
+  categoryId  Int?
+  category    Category?              @relation(fields: [categoryId], references: [id])
+  name        String
+  slug        String                 @unique
+  description String?
+  baseImage   String?
+  version     String?
+  createdAt   DateTime               @default(now())
+  seoSettings SEOSettings[]
+  logs        MessengerRedirectLog[]
+  variants    Variant[]
+  features    ProductFeature[]
+  specGroups      ProductSpecGroup[]
+}
+model ProductSpecGroup {
+  id          Int     @id @default(autoincrement())
+  productId   Int
+  product     Product @relation(fields: [productId], references: [id])
+
+  title       String
+  description String?
+  imageUrl    String?
+  specs       ProductSpec[]              
+}
+
+model ProductSpec {
+  id          Int     @id @default(autoincrement())
+  groupId     Int
+  group       ProductSpecGroup @relation(fields: [groupId], references: [id])
+
+  label       String     
+  value       String     
+}
+
+model Variant {
+  id        Int     @id @default(autoincrement())
+  productId Int
+  product   Product @relation(fields: [productId], references: [id])
+
+  color     String
+  lens      String?
+  price     Float
+  stock     Int      @default(0)
+  images    VariantImage[]
+  slug      String?  @unique
+}
+
+model VariantImage {
+  id        Int     @id @default(autoincrement())
+  variantId Int
+  variant   Variant @relation(fields: [variantId], references: [id])
+  url       String
+  alt       String?
+  sort      Int     @default(0)
+}
+model ProductFeature {
+  id        Int     @id @default(autoincrement())
+  productId Int
+  product   Product @relation(fields: [productId], references: [id])
+
+  title       String
+  description String?
+  mediaUrl    String?   // ✅ image or video
+}
+
+
+
+model BlogPost {
+  id              Int           @id @default(autoincrement())
+  storeId         Int
+  store           Store         @relation(fields: [storeId], references: [id])
+  title           String
+  slug            String        @unique
+  content         String
+  metaTitle       String?
+  metaDescription String?
+  publishedAt     DateTime?
+  seoSettings     SEOSettings[]
+}
+
+model SEOSettings {
+  id              Int       @id @default(autoincrement())
+  storeId         Int
+  store           Store     @relation(fields: [storeId], references: [id])
+  productId       Int?
+  product         Product?  @relation(fields: [productId], references: [id])
+  blogPostId      Int?
+  blogPost        BlogPost? @relation(fields: [blogPostId], references: [id])
+  metaTitle       String?
+  metaDescription String?
+  keywords        String?
+  schemaMarkup    Json?
+}
+
+model MessengerRedirectLog {
+  id        Int      @id @default(autoincrement())
+  storeId   Int
+  store     Store    @relation(fields: [storeId], references: [id])
+  productId Int
+  product   Product  @relation(fields: [productId], references: [id])
+  userAgent String?
+  clickedAt DateTime @default(now())
+}
+
+model Analytics {
+  id        Int      @id @default(autoincrement())
+  storeId   Int
+  store     Store    @relation(fields: [storeId], references: [id])
+  eventType String // "ProductView" | "MessengerClick" | "BlogRead"
+  entityId  Int?
+  timestamp DateTime @default(now())
+}
