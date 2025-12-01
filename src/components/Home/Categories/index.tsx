@@ -1,8 +1,7 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useCallback, useRef, useEffect, useState } from "react";
-import data from "./categoryData";
-import Image from "next/image";
+import CategorySkeleton from "@/components/Skeleton/CategorySkeleton";
 
 // Import Swiper styles
 import "swiper/css/navigation";
@@ -12,11 +11,15 @@ import { Tags } from "lucide-react";
 
 const Categories = () => {
   const [categories, setCategories] = useState<any[]>([]);
-  // Load categories
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     fetch("/api/categories")
       .then((res) => res.json())
-      .then(setCategories);
+      .then((data) => {
+        setCategories(data);
+        setLoading(false);
+      });
   }, []);
 
   const sliderRef = useRef(null);
@@ -90,29 +93,24 @@ const Categories = () => {
             </div>
           </div>
 
-          <Swiper
-            ref={sliderRef}
-            slidesPerView={4}
-            breakpoints={{
-              // when window width is >= 640px
-              0: {
-                slidesPerView: 2,
-              },
-              1000: {
-                slidesPerView: 4,
-                // spaceBetween: 4,
-              },
-              // when window width is >= 768px
-              1200: {
-                slidesPerView: 4,
-              },
-            }}>
-            {categories.map((item, key) => (
-              <SwiperSlide key={key}>
-                <SingleItem item={item} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          {loading ? (
+            <CategorySkeleton />
+          ) : (
+            <Swiper
+              ref={sliderRef}
+              slidesPerView={4}
+              breakpoints={{
+                0: { slidesPerView: 2 },
+                1000: { slidesPerView: 4 },
+                1200: { slidesPerView: 4 },
+              }}>
+              {categories.map((item, key) => (
+                <SwiperSlide key={key}>
+                  <SingleItem item={item} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          )}
         </div>
       </div>
     </section>

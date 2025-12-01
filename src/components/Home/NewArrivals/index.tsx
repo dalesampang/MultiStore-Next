@@ -3,12 +3,17 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import ProductItem from "@/components/Common/ProductItem";
 import { Glasses } from "lucide-react";
+import ProductSkeleton from "@/components/Skeleton/ProductSkeleton";
 const NewArrival = () => {
   const [products, setProducts] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     fetch("/api/products/data")
       .then((res) => res.json())
-      .then(setProducts);
+      .then((data) => {
+        setProducts(data);
+        setLoading(false);
+      });
   }, []);
 
   return (
@@ -30,12 +35,15 @@ const NewArrival = () => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-7.5 gap-y-9">
-          {/* <!-- New Arrivals item --> */}
-          {products.map((item, key) => (
-            <ProductItem item={item} key={key} />
-          ))}
-        </div>
+        {loading ? (
+          <ProductSkeleton />
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-7.5 gap-y-9">
+            {products.map((item, key) => (
+              <ProductItem item={item} key={key} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

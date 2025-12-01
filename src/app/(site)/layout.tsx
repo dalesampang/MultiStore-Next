@@ -16,26 +16,18 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    setTimeout(() => setLoading(false), 1000);
-  }, []);
-
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <body>
-        {loading ? (
-          <PreLoader />
-        ) : (
-          <>
-            <Header />
-            {children}
-            <ScrollToTop />
-            <Footer />
-            <Analytics />
-          </>
-        )}
+        (
+        <>
+          <Header />
+          {children}
+          <ScrollToTop />
+          <Footer />
+          <Analytics />
+        </>
+        )
       </body>
     </html>
   );

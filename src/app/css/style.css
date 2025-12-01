@@ -212,3 +212,7 @@ input[type="search"]::-webkit-search-results-decoration {
 .rounded-lg {
   border-radius: 0.5rem;
 }
+
+.bg-gray-300 {
+  background: #dbdee2;
+}
