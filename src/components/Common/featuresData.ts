@@ -1,51 +1,58 @@
 export const fixedFeatures = [
   {
+    id: "4a9c406c-87a3-4f57-86d6-b0cc52a3e76e",
     title: "Meta AI",
     description:
-      "Get real-time info and suggestions with Meta AI. Ask your AI glasses about landmarks you pass by, for recipes while on the go and even to remind you where you parked.",
+      "Meta AI works with Garmin* devices and other fitness tracking apps to help you stay motivated and on track with your goals. You can also get activity summaries in the Meta AI app to elevate your performance.\n",
     mediaUrl:
-      "https://res.cloudinary.com/djws2m6eo/image/upload/v1764586548/products/features/ue0oywjgeqeogpd8av0b.webp",
+      "https://res.cloudinary.com/djws2m6eo/image/upload/v1764614768/products/features/ktqaogxntyhuoc2a94qu.png",
   },
   {
-    title: "Capture",
+    id: "f195a52d-cb3a-4f0c-96fa-e08529158018",
+    title: "Hands-free capture",
     description:
-      "Record videos in 3K Ultra HD for the highest resolution. Capture moments in sharper detail than with Gen 1 glasses, and relive the memories on screens big or small.",
+      "Oakley Meta Vanguard features a centered, ultra-wide 12MP camera so you can capture mind-blowing moments in 3K from your authentic POV, hands-free.\n",
     mediaUrl:
-      "https://res.cloudinary.com/djws2m6eo/image/upload/v1764586571/products/features/jselz5lhe7be8pgpmgdu.jpg",
+      "https://res.cloudinary.com/djws2m6eo/image/upload/v1764614794/products/features/feilj7wrc73shbs5ovoo.webp",
   },
   {
-    title: "Battery",
+    id: "1a20dd6a-fe43-4e7d-a53f-e03c47fb4a05",
+    title: "Immersive audio",
     description:
-      "Spend more time living and less time charging than with Gen 1 glasses. Enjoy up to 8 hours of battery life, plus 48 more hours with the charging case. Power up to 50% in just 20 minutes.",
+      "The powerful open-ear speakers built into the temples of the glasses give athletes epic, immersive audio quality in different conditions.\n",
     mediaUrl:
-      "https://res.cloudinary.com/djws2m6eo/image/upload/v1764586598/products/features/qci0t5t7gogt5s0z8hsd.webp",
+      "https://res.cloudinary.com/djws2m6eo/image/upload/v1764614806/products/features/rodjtbtnsl4ktryz4jg1.webp",
   },
   {
-    title: "Listen",
+    id: "d0d8d3b4-8ffd-43fc-a38f-072db8ad4fa2",
+    title: "Activity sharing",
     description:
-      "Bluetooth-connected speakers built into the arms of the glasses deliver sound only you can hear, while 5 built-in microphones pick up crisp audio for phone calls.",
+      "Add your performance metrics from Garmin devices or Strava to videos and photos to share with your family, friends and community in more dynamic ways.\n",
     mediaUrl:
-      "https://res.cloudinary.com/djws2m6eo/image/upload/v1764589857/sss_u7u1d0.webp",
+      "https://res.cloudinary.com/djws2m6eo/image/upload/v1764614820/products/features/ayj8lvyhhsyj9e7ct7im.webp",
   },
   {
-    title: "Hands-free communication",
+    id: "fa550e99-ab29-48c8-8969-33c73a0aed39",
+    title: "Oakley Prizm lens technology",
     description:
-      "Take video calls, send text or voice messages and make phone calls—all hands-free. Sound your best on calls with 90% of background noise blocked.",
+      "Oakley Meta glasses come with Oakley Prizm™ lenses, which fine-tune vision and optimize contrast across light and weather conditions.\n",
     mediaUrl:
-      "https://res.cloudinary.com/djws2m6eo/image/upload/v1764586765/products/features/qdrd19zerz86iu3dd1ps.jpg",
+      "https://res.cloudinary.com/djws2m6eo/image/upload/v1764614837/products/features/ggpmaxoz9lmfuqkkdxlq.webp",
   },
   {
-    title: "Translate",
-    description:
-      "Seamlessly explore new countries and make new connections. Converse in real-time between English, French, Italian, Spanish, German and Portuguese (Brazil).",
-    mediaUrl:
-      "https://res.cloudinary.com/djws2m6eo/image/upload/v1764586800/products/features/ph2ibec2clva0ezscze3.webp",
-  },
-  {
+    id: "f288b166-bd58-4cb1-a605-9c008dff172d",
     title: "Meta AI app",
     description:
-      "Manage your Ray-Ban Meta glasses and customize settings, import and share photos and interact with the Meta AI assistant on both your glasses and the app. Learn about new features and see how others are getting the most out of Meta AI.",
+      "Use the Meta AI app to manage your glasses, customize settings, share photos and interact with your Meta AI assistant. Discover new features and tips from other users all in one place. The Meta AI app is required to support your glasses experience.\n",
     mediaUrl:
-      "https://res.cloudinary.com/djws2m6eo/image/upload/v1764586832/products/features/skih0lhng9bmetikifs4.png",
+      "https://res.cloudinary.com/djws2m6eo/image/upload/v1764614852/products/features/uz4a1cpykjwfce4sxap5.webp",
+  },
+  {
+    id: "32b9b2da-33ae-437a-81d1-04fb1fc61fd0",
+    title: "Battery life",
+    description:
+      "A fully charged pair of Oakley Meta Vanguard glasses can last up to 6 hours of continuous audio playback and 9 hours of typical use. You can fully charge Oakley Meta Vanguard in 75 minutes. The charging case can provide an additional 36 hours of charging on the go.",
+    mediaUrl:
+      "https://res.cloudinary.com/djws2m6eo/image/upload/v1764614866/products/features/iu1xdlct8lkkbdxefezx.webp",
   },
 ];
