@@ -19,7 +19,10 @@ export async function GET(
 }
 
 // PUT (edit) category
-export async function PUT(req: Request, context: { params: { id: string } }) {
+export async function PUT(
+  req: Request,
+  context: { params: Promise<{ id: string }> }
+) {
   try {
     const { id } = await context.params;
     const { name, slug, imageUrl } = await req.json();
@@ -47,7 +50,7 @@ export async function PUT(req: Request, context: { params: { id: string } }) {
 // DELETE category
 export async function DELETE(
   req: Request,
-  context: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     const { id } = await context.params;
