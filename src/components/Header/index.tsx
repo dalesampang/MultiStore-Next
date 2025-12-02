@@ -13,6 +13,7 @@ const Header = () => {
   const router = useRouter();
   // Sticky menu
   const handleStickyMenu = () => {
+    const isMobile = window.innerWidth < 1024;
     if (window.scrollY >= 80) {
       setStickyMenu(true);
     } else {
@@ -61,12 +62,20 @@ const Header = () => {
             stickyMenu ? "py-4" : "py-6"
           }`}>
           {/* <!-- header top left --> */}
-          <div className="xl:w-auto flex-col sm:flex-row w-full flex sm:justify-between sm:items-center gap-5 sm:gap-10">
+          <div className="xl:w-auto flex-col lg:flex-row w-full flex lg:justify-between lg:items-center gap-5 lg:gap-10">
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-10 items-start sm:items-center">
-              <Link className="flex-shrink-0" href="/">
+              <Link className="hidden xl:flex flex-shrink-0" href="/">
                 <Image src="/Antipara.jpeg" alt="Logo" width={75} height={36} />
               </Link>
-              <div className=" flex xl:hidden  w-full lg:w-auto items-center gap-7.5">
+              <div className="flex xl:hidden  w-full lg:w-auto items-center gap-2">
+                <Link className="flex-shrink-0" href="/">
+                  <Image
+                    src="/Antipara.jpeg"
+                    alt="Logo"
+                    width={75}
+                    height={36}
+                  />
+                </Link>
                 <div className=" flex items-center gap-3.5">
                   <svg
                     width="24"
