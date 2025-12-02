@@ -5,6 +5,7 @@ import { Product, Variant } from "@/types/model";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import OrderNowButton from "../Common/OrderButton";
+import { set } from "react-hook-form";
 
 function decodeHtmlEntities(html: string) {
   const txt = document.createElement("textarea");
@@ -28,28 +29,31 @@ export default function ProductDetails({
 
   const [previewImg, setPreviewImg] = useState(variant.images?.[0]?.id ?? null);
   const [activeTab, setActiveTab] = useState("tabOne");
-  const router = useRouter();
+  const [selectedVariant, setSelectedVariant] = useState(variant);
   const decoded = useMemo(
     () => decodeHtmlEntities(product.description),
     [product.description]
   );
   useEffect(() => {
-    if (variant.images?.length) {
-      setPreviewImg(variant.images[0].id);
+    if (selectedVariant.images?.length) {
+      setPreviewImg(selectedVariant.images[0].id);
     }
-  }, [variant]);
+  }, [selectedVariant]);
   useEffect(() => {
     window.gtag?.("event", "view_item", {
       item_id: product.id,
       item_name: product.name + " ",
       item_category: product.category.name,
       currency: "PHP",
-      value: variant.price,
+      value: selectedVariant.price,
     });
-  }, [variant]);
-  const previewImage = variant.images?.find((img) => img.id === previewImg);
-  const handleVariantClick = (variantSlug: string) => {
-    router.push(`/ai-glasses/${variantSlug}`, { scroll: false });
+  }, [selectedVariant]);
+  const previewImage = selectedVariant.images?.find(
+    (img) => img.id === previewImg
+  );
+  const handleVariantClick = (variant: Variant) => {
+    setSelectedVariant(variant);
+    window.history.pushState(null, "", `/ai-glasses/${variant.slug}`);
   };
 
   return (
@@ -77,7 +81,7 @@ export default function ProductDetails({
                 </div>
 
                 <div className="flex flex-wrap sm:flex-nowrap gap-4.5 mt-6">
-                  {variant.images.map((item, key) => (
+                  {selectedVariant.images.map((item, key) => (
                     <button
                       onClick={() => setPreviewImg(item.id)}
                       key={key}
@@ -242,13 +246,13 @@ export default function ProductDetails({
                 </div>
 
                 <h3 className="text-xl font-medium sm:text-2xl xl:text-custom-2 text-dark">
-                  Price: ₱{variant.price.toLocaleString("en-PH")}
+                  Price: ₱{selectedVariant.price.toLocaleString("en-PH")}
                 </h3>
                 <div className="flex flex-wrap sm:flex-nowrap gap-4.5 mt-6">
                   {product.variants.map((item, key) => (
                     <button
                       key={key}
-                      onClick={() => handleVariantClick(item.slug)}
+                      onClick={() => handleVariantClick(item)}
                       className={`flex items-center justify-center w-15 sm:w-20 h-15 sm:h-20 overflow-hidden rounded-lg bg-gray-2 shadow-1 ease-out duration-200 border-2 hover:border-blue ${
                         item.id === variant.id
                           ? "border-black"
@@ -270,7 +274,7 @@ export default function ProductDetails({
                   </div>
 
                   <div className="flex items-center gap-2.5">
-                    <p>{variant.color}</p>
+                    <p>{selectedVariant.color}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4 px-2 py-2">
@@ -279,12 +283,12 @@ export default function ProductDetails({
                   </div>
 
                   <div className="flex items-center gap-2.5">
-                    <p>{variant.lens}</p>
+                    <p>{selectedVariant.lens}</p>
                   </div>
                 </div>
 
                 <div className="flex flex-wrap items-center gap-4.5">
-                  <OrderNowButton slug={variant.slug} />
+                  <OrderNowButton slug={selectedVariant.slug} />
                 </div>
                 <div className="flex items-center gap-4 px-2 py-2">
                   <div
@@ -362,13 +366,13 @@ export default function ProductDetails({
             name: product.name,
             image: product.baseImage,
             description: product.description,
-            sku: variant.slug,
+            sku: selectedVariant.slug,
             brand: { "@type": "Brand", name: "Antipara Manila" },
             offers: {
               "@type": "Offer",
-              url: `https://antiparamanila.store/ai-glasses/${variant.slug}`,
+              url: `https://antiparamanila.store/ai-glasses/${selectedVariant.slug}`,
               priceCurrency: "PHP",
-              price: variant.price,
+              price: selectedVariant.price,
               availability: "https://schema.org/InStock",
             },
           }),
