@@ -1,13 +1,17 @@
 import { MetadataRoute } from "next";
 
-// Example: fetch products & categories from your API or DB
+// ✅ Always fetch fresh data
 async function getProducts() {
-  const res = await fetch("https://antiparamanila.store/api/products/data");
+  const res = await fetch("https://antiparamanila.store/api/products/data", {
+    cache: "no-store",
+  });
   return res.json();
 }
 
 async function getCategories() {
-  const res = await fetch("https://antiparamanila.store/api/categories");
+  const res = await fetch("https://antiparamanila.store/api/categories", {
+    cache: "no-store",
+  });
   return res.json();
 }
 
