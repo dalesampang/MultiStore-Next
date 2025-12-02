@@ -33,12 +33,12 @@ export default function ProductPageClient({
     fetchProduct();
   }, [productSlug]);
 
+  if (loading) return <PreLoader />;
+
   if (!product)
     return <div className="p-10 text-red-500">Product not found</div>;
 
-  return loading ? (
-    <PreLoader />
-  ) : (
+  return (
     <>
       <script
         type="application/ld+json"

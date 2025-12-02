@@ -254,7 +254,7 @@ export default function ProductDetails({
                       key={key}
                       onClick={() => handleVariantClick(item)}
                       className={`flex items-center justify-center w-15 sm:w-20 h-15 sm:h-20 overflow-hidden rounded-lg bg-gray-2 shadow-1 ease-out duration-200 border-2 hover:border-blue ${
-                        item.id === variant.id
+                        item.id === selectedVariant.id
                           ? "border-black"
                           : "border-transparent"
                       }`}>
