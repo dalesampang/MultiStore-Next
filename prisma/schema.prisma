@@ -29,6 +29,7 @@ model Category {
   imageUrl  String?
   slug     String    @unique
   products Product[]
+  sort Int?
 }
 
 model Product {
@@ -49,6 +50,7 @@ model Product {
   variants    Variant[]
   features    ProductFeature[]
   specGroups      ProductSpecGroup[]
+  sort Int?
 }
 model ProductSpecGroup {
   id          Int     @id @default(autoincrement())
@@ -81,6 +83,7 @@ model Variant {
   stock     Int      @default(0)
   images    VariantImage[]
   slug      String?  @unique
+  sort Int?
 }
 
 model VariantImage {

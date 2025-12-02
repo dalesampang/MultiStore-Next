@@ -14,7 +14,7 @@ export async function GET(
       include: {
         category: true,
         seoSettings: true,
-        variants: { include: { images: true } },
+        variants: { orderBy: { price: "desc" }, include: { images: true } },
         features: true,
         specGroups: { include: { specs: true } },
       },
@@ -32,7 +32,7 @@ export async function GET(
           include: {
             category: true,
             seoSettings: true,
-            variants: { include: { images: true } },
+            variants: { orderBy: { price: "desc" }, include: { images: true } },
             features: true,
             specGroups: { include: { specs: true } },
           },

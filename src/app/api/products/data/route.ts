@@ -7,6 +7,7 @@ export async function GET(req: Request) {
   const query = searchParams.get("q")?.toLowerCase();
 
   const products = await prisma.product.findMany({
+    orderBy: { sort: "asc" },
     where: query
       ? {
           OR: [
@@ -17,6 +18,7 @@ export async function GET(req: Request) {
       : undefined,
     include: {
       variants: {
+        orderBy: { price: "desc" },
         include: { images: true },
       },
     },

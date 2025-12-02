@@ -1,59 +1,54 @@
-// types/models.ts
-// Typesafe TypeScript models and DTOs derived from your Prisma schema.
-// These are plain TS types/interfaces you can use across your app for strong typing,
-// independent of Prisma Client's generated types.
-
-// ---------- Core Entities ----------
-
 export interface Store {
   id: number;
   name: string;
   slug: string;
   messengerPageId?: string | null;
-  products?: Product[]; // back relation
+  products?: Product[];
   categories?: Category[];
   blogPosts?: BlogPost[];
   seoSettings?: SEOSettings[];
   logs?: MessengerRedirectLog[];
   analytics?: Analytics[];
-  createdAt: string; // Date serialized over the wire (ISO)
+  createdAt: string;
 }
 
 export interface Category {
   id: number;
   storeId: number;
-  store?: Store; // relation
+  store?: Store;
   name: string;
   imageUrl?: string | null;
   slug: string;
   products?: Product[];
+  sort?: number;
 }
 
 export interface Product {
   id: number;
   storeId: number;
-  store?: Store; // relation
+  store?: Store;
   categoryId?: number | null;
-  category?: Category | null; // relation
+  category?: Category | null;
   name: string;
   slug: string;
   brand: string;
   description?: string | null;
   baseImage?: string | null;
   version?: string | null;
-  createdAt: string; // ISO date string
+  createdAt: string;
   seoSettings?: SEOSettings[];
   logs?: MessengerRedirectLog[];
   variants?: Variant[];
   features?: ProductFeature[];
   specGroups?: ProductSpecGroup[];
   variant: Variant;
+  sort?: number;
 }
 
 export interface ProductSpecGroup {
   id: number;
   productId: number;
-  product?: Product; // relation
+  product?: Product;
   title: string;
   description?: string | null;
   imageUrl?: string | null;
@@ -63,7 +58,7 @@ export interface ProductSpecGroup {
 export interface ProductSpec {
   id: number;
   groupId: number;
-  group?: ProductSpecGroup; // relation
+  group?: ProductSpecGroup;
   label: string;
   value: string;
 }
@@ -71,19 +66,20 @@ export interface ProductSpec {
 export interface Variant {
   id: number;
   productId: number;
-  product?: Product; // relation
+  product?: Product;
   color: string;
   lens?: string | null;
   price: number;
   stock: number;
   images?: VariantImage[];
   slug?: string | null;
+  sort?: number;
 }
 
 export interface VariantImage {
   id: number;
   variantId: number;
-  variant?: Variant; // relation
+  variant?: Variant;
   url: string;
   alt?: string | null;
   sort: number;
@@ -92,61 +88,57 @@ export interface VariantImage {
 export interface ProductFeature {
   id: number;
   productId: number;
-  product?: Product; // relation
+  product?: Product;
   title: string;
   description?: string | null;
-  mediaUrl?: string | null; // image or video
+  mediaUrl?: string | null;
 }
 
 export interface BlogPost {
   id: number;
   storeId: number;
-  store?: Store; // relation
+  store?: Store;
   title: string;
   slug: string;
   content: string;
   metaTitle?: string | null;
   metaDescription?: string | null;
-  publishedAt?: string | null; // ISO
+  publishedAt?: string | null;
   seoSettings?: SEOSettings[];
 }
 
 export interface SEOSettings {
   id: number;
   storeId: number;
-  store?: Store; // relation
+  store?: Store;
   productId?: number | null;
-  product?: Product | null; // relation
+  product?: Product | null;
   blogPostId?: number | null;
-  blogPost?: BlogPost | null; // relation
+  blogPost?: BlogPost | null;
   metaTitle?: string | null;
   metaDescription?: string | null;
   keywords?: string | null;
-  schemaMarkup?: unknown | null; // Json
+  schemaMarkup?: unknown | null;
 }
 
 export interface MessengerRedirectLog {
   id: number;
   storeId: number;
-  store?: Store; // relation
+  store?: Store;
   productId: number;
-  product?: Product; // relation
+  product?: Product;
   userAgent?: string | null;
-  clickedAt: string; // ISO
+  clickedAt: string;
 }
 
 export interface Analytics {
   id: number;
   storeId: number;
-  store?: Store; // relation
-  eventType: string; // "ProductView" | "MessengerClick" | "BlogRead"
+  store?: Store;
+  eventType: string;
   entityId?: number | null;
-  timestamp: string; // ISO
+  timestamp: string;
 }
-
-// ---------- DTOs (Create/Update payloads) ----------
-// These mirror the shapes you typically send from the client,
-// keeping relations as IDs and nested creates explicit.
 
 export interface CreateStoreDTO {
   name: string;
@@ -176,16 +168,16 @@ export interface UpdateCategoryDTO {
 export interface VariantImageInput {
   url: string;
   alt?: string | null;
-  sort?: number; // default handled server-side
+  sort?: number;
 }
 
 export interface VariantInput {
   color: string;
   lens?: string | null;
-  price: number | string; // allow string from forms, parse server-side
-  stock: number | string; // allow string from forms
+  price: number | string;
+  stock: number | string;
   slug?: string | null;
-  images?: VariantImageInput[]; // client sends array; server maps to create
+  images?: VariantImageInput[];
 }
 
 export interface ProductFeatureInput {
@@ -227,7 +219,7 @@ export interface UpdateProductDTO {
   description?: string | null;
   baseImage?: string | null;
   version?: string | null;
-  variants?: VariantInput[]; // if updating variants client-side
+  variants?: VariantInput[];
   features?: ProductFeatureInput[];
   specGroups?: ProductSpecGroupInput[];
 }
@@ -239,7 +231,7 @@ export interface CreateBlogPostDTO {
   content: string;
   metaTitle?: string | null;
   metaDescription?: string | null;
-  publishedAt?: string | null; // ISO
+  publishedAt?: string | null;
 }
 
 export interface UpdateBlogPostDTO {
@@ -248,7 +240,7 @@ export interface UpdateBlogPostDTO {
   content?: string;
   metaTitle?: string | null;
   metaDescription?: string | null;
-  publishedAt?: string | null; // ISO
+  publishedAt?: string | null;
 }
 
 export interface CreateSEOSettingsDTO {
@@ -280,15 +272,12 @@ export interface CreateAnalyticsDTO {
   storeId: number;
   eventType: "ProductView" | "MessengerClick" | "BlogRead";
   entityId?: number | null;
-  timestamp?: string; // ISO
+  timestamp?: string;
 }
-
-// ---------- Helpers ----------
 
 export type ISODateString = string;
 export type ID = number;
 
-// Narrowed view models for list pages / cards
 export interface ProductCard {
   id: number;
   name: string;
@@ -306,10 +295,9 @@ export interface VariantCard {
   lens?: string | null;
   price: number;
   stock: number;
-  thumbUrl?: string | null; // e.g., first image url
+  thumbUrl?: string | null;
 }
 
-// Utility to coerce incoming form values into canonical numeric types
 export function coerceVariantInput(v: VariantInput): Omit<
   Variant,
   "id" | "productId" | "product" | "images"

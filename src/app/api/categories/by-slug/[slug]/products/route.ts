@@ -11,10 +11,11 @@ export async function GET(
     where: { slug: slug },
     include: {
       products: {
+        orderBy: { sort: "asc" },
         include: {
           variants: {
+            orderBy: { sort: "asc" },
             include: { images: true },
-            orderBy: { id: "asc" },
           },
         },
       },

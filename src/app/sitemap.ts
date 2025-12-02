@@ -1,6 +1,5 @@
 import { MetadataRoute } from "next";
 
-// ✅ Always fetch fresh data
 async function getProducts() {
   const res = await fetch("https://antiparamanila.store/api/products/data", {
     cache: "no-store",

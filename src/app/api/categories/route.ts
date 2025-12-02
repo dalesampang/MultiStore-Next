@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 // GET all categories
 export async function GET() {
   const categories = await prisma.category.findMany({
+    orderBy: { sort: "asc" },
     include: { store: true }, // optional: include store info
   });
   return NextResponse.json(categories);

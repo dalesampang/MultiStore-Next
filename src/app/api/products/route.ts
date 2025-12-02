@@ -4,6 +4,7 @@ import slugify from "slugify";
 
 export async function GET() {
   const products = await prisma.product.findMany({
+    orderBy: { sort: "asc" },
     include: { category: true, seoSettings: true },
   });
   return NextResponse.json(products);
@@ -13,7 +14,6 @@ export async function POST(req: Request) {
   const body = await req.json();
 
   try {
-    console.log(body);
     const variants = body.variants.map((v: any) => ({
       color: v.color,
       lens: v.lens,
@@ -22,7 +22,6 @@ export async function POST(req: Request) {
       images: v.images ?? [],
     }));
 
-    console.log(variants);
     const product = await prisma.product.create({
       data: {
         name: body.name,
