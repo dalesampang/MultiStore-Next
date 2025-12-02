@@ -67,7 +67,7 @@ const Header = () => {
               <Link className="hidden xl:flex flex-shrink-0" href="/">
                 <Image src="/Antipara.jpeg" alt="Logo" width={75} height={36} />
               </Link>
-              <div className="flex xl:hidden  w-full lg:w-auto items-center gap-2">
+              <div className="flex xl:hidden  w-full lg:w-auto justify-between gap-2">
                 <Link className="flex-shrink-0" href="/">
                   <Image
                     src="/Antipara.jpeg"
