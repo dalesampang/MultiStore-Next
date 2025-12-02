@@ -27,10 +27,49 @@ export const metadata = {
     ],
   },
 };
+async function getProducts() {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/data`,
+    {
+      cache: "no-store",
+    }
+  );
+  if (!res.ok) throw new Error("Failed to fetch products");
+  return res.json();
+}
 
-export default function HomePage() {
+export default async function HomePage() {
+  const products = await getProducts();
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: products.map((item: any, index: number) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: `https://antiparamanila.store/ai-glasses/${item.variant.slug}`,
+      name: `${item.brand} ${item.name} ${item.variant.color} ${item.variant.lens}`,
+      item: {
+        "@type": "Product",
+        name: item.name,
+        brand: { "@type": "Brand", name: item.brand },
+        offers: {
+          "@type": "Offer",
+          priceCurrency: "PHP",
+          price: item.variant.price,
+          availability: "https://schema.org/InStock",
+          url: `https://antiparamanila.store/ai-glasses/${item.variant.slug}`,
+        },
+      },
+    })),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+
       <Home />
     </>
   );
