@@ -17,12 +17,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const baseUrl = "https://antiparamanila.store";
 
-  const productEntries = products.map((p: any) => ({
-    url: `${baseUrl}/ai-glasses/${p.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly",
-    priority: 0.8,
-  }));
+  const productEntries = products.flatMap((p: any) => {
+    const baseEntry = {
+      url: `${baseUrl}/ai-glasses/${p.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    };
+
+    // If product has variants, add them
+    const variantEntries =
+      p.variants?.map((v: any) => ({
+        url: `${baseUrl}/ai-glasses/${v.slug}`,
+        lastModified: new Date(),
+        changeFrequency: "weekly",
+        priority: 0.7,
+      })) ?? [];
+
+    return [baseEntry, ...variantEntries];
+  });
 
   const categoryEntries = categories.map((c: any) => ({
     url: `${baseUrl}/categories/${c.slug}`,

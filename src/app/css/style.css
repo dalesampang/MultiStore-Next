@@ -216,3 +216,7 @@ input[type="search"]::-webkit-search-results-decoration {
 .bg-gray-300 {
   background: #dbdee2;
 }
+
+.text-price {
+  color: #2e7d32;
+}

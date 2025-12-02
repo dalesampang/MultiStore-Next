@@ -21,6 +21,16 @@ export async function GET(req: Request) {
       },
     },
   });
+  const expandedData = products.flatMap((product) => {
+    const baseEntry = { ...product, isVariant: false };
 
-  return NextResponse.json(products);
+    const variantEntries =
+      product.variants?.map((variant) => ({
+        ...product,
+        variant: variant,
+      })) ?? [];
+
+    return [...variantEntries];
+  });
+  return NextResponse.json(expandedData);
 }

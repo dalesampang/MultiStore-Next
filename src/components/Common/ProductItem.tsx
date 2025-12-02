@@ -9,7 +9,7 @@ const ProductItem = ({ item }: { item: Product }) => {
   const router = useRouter();
 
   const handleProductDetails = () => {
-    router.push(`/ai-glasses/${item.slug}`);
+    router.push(`/ai-glasses/${item.variant.slug}`);
   };
 
   const handleOrder = () => {};
@@ -18,10 +18,15 @@ const ProductItem = ({ item }: { item: Product }) => {
       <div
         className="relative overflow-hidden flex items-center justify-center rounded-lg bg-[#F6F7FB] min-h-[270px] mb-4 cursor-pointer"
         onClick={() => handleProductDetails()}>
-        <Image src={item.baseImage} alt="" width={250} height={250} />
+        <Image
+          src={item.variant.images?.[0].url}
+          alt=""
+          width={250}
+          height={250}
+        />
 
         <div className="absolute left-0 bottom-0 translate-y-full w-full flex items-center justify-center gap-2.5 pb-5 ease-linear duration-200 group-hover:translate-y-0">
-          <OrderNowButton slug={item.slug} />
+          <OrderNowButton slug={item.variant.slug} />
         </div>
       </div>
       <div className="gap-2.5 mb-2">
@@ -65,9 +70,15 @@ const ProductItem = ({ item }: { item: Product }) => {
             {item.name} {item.version && `- ${item.version}`}
           </Link>
         </h2>
+        <span className="flex justify-center gap-2 font-medium text-sm">
+          <span className="text-dark">{item.variant.color}</span>
+        </span>
+        <span className="flex justify-center gap-2 font-medium text-sm">
+          <span className="text-dark">{item.variant.lens}</span>
+        </span>
         <span className="flex justify-center gap-2 font-medium text-lg">
-          <span className="text-dark">
-            ₱{item.variants[0].price.toLocaleString("en-PH")}
+          <span className="text-price">
+            ₱{item.variant.price.toLocaleString("en-PH")}
           </span>
           {/* <span className="text-dark-4 line-through">${item.price}</span> */}
         </span>

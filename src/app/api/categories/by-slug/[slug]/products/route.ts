@@ -20,9 +20,18 @@ export async function GET(
       },
     },
   });
+  const expandedData = category.products.flatMap((product) => {
+    const variantEntries =
+      product.variants?.map((variant) => ({
+        ...product,
+        variant: variant,
+      })) ?? [];
+
+    return [...variantEntries];
+  });
 
   if (!category) {
     return NextResponse.json({ error: "Category not found" }, { status: 404 });
   }
-  return NextResponse.json({ category, products: category.products });
+  return NextResponse.json({ category, products: expandedData });
 }

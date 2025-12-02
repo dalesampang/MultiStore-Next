@@ -46,6 +46,7 @@ export interface Product {
   variants?: Variant[];
   features?: ProductFeature[];
   specGroups?: ProductSpecGroup[];
+  variant: Variant;
 }
 
 export interface ProductSpecGroup {
