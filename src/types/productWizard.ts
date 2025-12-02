@@ -35,6 +35,7 @@ type ProductForm = {
   name: string;
   description: string;
   slug: string;
+  brand: string;
   storeId: number;
   categoryId: number;
   categoryName: string;

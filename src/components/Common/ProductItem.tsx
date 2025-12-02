@@ -30,62 +30,30 @@ const ProductItem = ({ item }: { item: Product }) => {
         </div>
       </div>
       <div className="gap-2.5 mb-2">
-        <div className="flex justify-center gap-2.5 mb-2">
-          <div className="flex justify-center gap-1">
-            <Image
-              src="/images/icons/icon-star.svg"
-              alt="star icon"
-              width={14}
-              height={14}
-            />
-            <Image
-              src="/images/icons/icon-star.svg"
-              alt="star icon"
-              width={14}
-              height={14}
-            />
-            <Image
-              src="/images/icons/icon-star.svg"
-              alt="star icon"
-              width={14}
-              height={14}
-            />
-            <Image
-              src="/images/icons/icon-star.svg"
-              alt="star icon"
-              width={14}
-              height={14}
-            />
-            <Image
-              src="/images/icons/icon-star.svg"
-              alt="star icon"
-              width={14}
-              height={14}
-            />
-          </div>
-        </div>
+        <h2 className="text-center font-medium text-dark text-custom-1 duration-200 ease-out hover:text-blue mb-1.5">
+          <Link href={`/ai-glasses/${item.slug}`} className="block">
+            <div className="mb-0.5">
+              {item.brand} {item.name}
+              {item.version && (
+                <>
+                  <br />({item.version})
+                </>
+              )}
+            </div>
 
-        <h2 className="flex justify-center font-medium text-dark ease-out text-custom-1 duration-200  hover:text-blue mb-1.5">
-          <Link href={`/ai-glasses/${item.slug}`} className="flex text-center">
-            {item.name} {item.version && `- ${item.version}`}
+            <div className="text-sm font-medium text-dark flex justify-center gap-2">
+              <span>{item.variant.color}</span>
+            </div>
+
+            <div className="text-sm font-medium text-dark flex justify-center gap-2">
+              <span>{item.variant.lens}</span>
+            </div>
+
+            <div className="text-lg font-semibold text-price flex justify-center mt-1">
+              ₱{item.variant.price.toLocaleString("en-PH")}
+            </div>
           </Link>
         </h2>
-        <span className="flex justify-center gap-2 font-medium text-sm">
-          <span className="text-dark flex text-center">
-            {item.variant.color}
-          </span>
-        </span>
-        <span className="flex justify-center gap-2 font-medium text-sm">
-          <span className="text-dark flex text-center">
-            {item.variant.lens}
-          </span>
-        </span>
-        <span className="flex justify-center gap-2 font-medium text-lg">
-          <span className="text-price flex text-center">
-            ₱{item.variant.price.toLocaleString("en-PH")}
-          </span>
-          {/* <span className="text-dark-4 line-through">${item.price}</span> */}
-        </span>
       </div>
     </div>
   );

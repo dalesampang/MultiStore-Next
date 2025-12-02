@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: ProductPageProps) {
 
   return {
     title:
-      product.category.name +
+      product.brand +
       " " +
       product.name +
       " " +
@@ -29,9 +29,15 @@ export async function generateMetadata({ params }: ProductPageProps) {
       " | SmartGlasses Philippines",
     description: product.description,
     keywords:
-      product.category.name +
+      product.brand +
       "," +
       product.name +
+      "," +
+      variant.color +
+      "," +
+      variant.lens +
+      "," +
+      product.version +
       ",Meta AI,smart glasses, Philippines",
     alternates: {
       canonical: "https://antiparamanila.store/ai-glasses/" + variant.slug,

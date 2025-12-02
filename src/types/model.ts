@@ -37,6 +37,7 @@ export interface Product {
   category?: Category | null; // relation
   name: string;
   slug: string;
+  brand: string;
   description?: string | null;
   baseImage?: string | null;
   version?: string | null;
