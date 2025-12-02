@@ -19,7 +19,7 @@ export const metadata = {
       "Antipara Manila is the #1 seller of smart glasses in the Philippines.",
     images: [
       {
-        url: "https://res.cloudinary.com/djws2m6eo/image/upload/v1764591660/antipara-manila_stbq7j.png",
+        url: "https://res.cloudinary.com/djws2m6eo/image/upload/v1764691334/Antipara_sev4da.jpg",
         width: 1200,
         height: 630,
         alt: "Antipara Manila Smart Glasses",
