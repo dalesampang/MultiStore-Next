@@ -66,18 +66,22 @@ const ProductItem = ({ item }: { item: Product }) => {
         </div>
 
         <h2 className="flex justify-center font-medium text-dark ease-out text-custom-1 duration-200  hover:text-blue mb-1.5">
-          <Link href={`/ai-glasses/${item.slug}`}>
+          <Link href={`/ai-glasses/${item.slug}`} className="flex text-center">
             {item.name} {item.version && `- ${item.version}`}
           </Link>
         </h2>
         <span className="flex justify-center gap-2 font-medium text-sm">
-          <span className="text-dark">{item.variant.color}</span>
+          <span className="text-dark flex text-center">
+            {item.variant.color}
+          </span>
         </span>
         <span className="flex justify-center gap-2 font-medium text-sm">
-          <span className="text-dark">{item.variant.lens}</span>
+          <span className="text-dark flex text-center">
+            {item.variant.lens}
+          </span>
         </span>
         <span className="flex justify-center gap-2 font-medium text-lg">
-          <span className="text-price">
+          <span className="text-price flex text-center">
             ₱{item.variant.price.toLocaleString("en-PH")}
           </span>
           {/* <span className="text-dark-4 line-through">${item.price}</span> */}
