@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: ProductPageProps) {
     openGraph: {
       title: product.category.name + " " + product.name,
       description: product.description,
-      images: product.variant.images[0].url,
+      images: variant.images[0].url,
     },
   };
 }
