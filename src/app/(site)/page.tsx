@@ -37,6 +37,9 @@ async function getProducts() {
   if (!res.ok) throw new Error("Failed to fetch products");
   return res.json();
 }
+function stripHtml(html: string): string {
+  return html.replace(/<[^>]*>/g, "").trim();
+}
 
 export default async function HomePage() {
   const products = await getProducts();
@@ -47,13 +50,12 @@ export default async function HomePage() {
       "@type": "ListItem",
       position: index + 1,
       url: `https://antiparamanila.store/ai-glasses/${item.variant.slug}`,
-      name: `${item.brand} ${item.name} ${item.variant.color} ${item.variant.lens}`,
       item: {
         "@type": "Product",
         name: `${item.brand} ${item.name} ${item.variant.color} ${item.variant.lens}`,
         brand: { "@type": "Brand", name: item.brand },
         image: item.variant.images.map((img: any) => img.url),
-        description: item.description,
+        description: stripHtml(item.description),
         offers: {
           "@type": "Offer",
           priceCurrency: "PHP",
