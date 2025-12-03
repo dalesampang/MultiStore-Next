@@ -1,4 +1,5 @@
 import Home from "@/components/Home";
+import { convert } from "html-to-text";
 
 export const metadata = {
   title: "Antipara Manila | #1 Seller of Smart Glasses in the Philippines",
@@ -38,7 +39,7 @@ async function getProducts() {
   return res.json();
 }
 function stripHtml(html: string): string {
-  return html.replace(/<[^>]*>/g, "").trim();
+  return convert(html, { wordwrap: false });
 }
 
 export default async function HomePage() {
