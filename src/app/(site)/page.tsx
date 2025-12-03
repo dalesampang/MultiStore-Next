@@ -52,9 +52,10 @@ export default async function HomePage() {
     itemListElement: products.map((item: any, index: number) => ({
       "@type": "ListItem",
       position: index + 1,
-      name: `${item.brand} ${item.name} ${item.variant.color} ${item.variant.lens}`,
+      url: `https://antiparamanila.store/ai-glasses/${item.variant.slug}`,
       item: {
         "@type": "Product",
+        name: `${item.brand} ${item.name} ${item.variant.color} ${item.variant.lens}`,
         brand: { "@type": "Brand", name: item.brand },
         image: item.variant.images.map((img: any) => img.url),
         description: generateDescription(item),
@@ -63,7 +64,6 @@ export default async function HomePage() {
           priceCurrency: "PHP",
           price: item.variant.price,
           availability: "http://schema.org/InStock",
-          url: `https://antiparamanila.store/ai-glasses/${item.variant.slug}`,
         },
       },
     })),
