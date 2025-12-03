@@ -1,4 +1,5 @@
 import Home from "@/components/Home";
+import { Product } from "@/types/model";
 import { convert } from "html-to-text";
 
 export const metadata = {
@@ -38,8 +39,9 @@ async function getProducts() {
   if (!res.ok) throw new Error("Failed to fetch products");
   return res.json();
 }
-function stripHtml(html: string): string {
-  return convert(html, { wordwrap: false });
+function generateDescription(item: Product): string {
+  const description = `Buy ${item.brand} ${item.name} ${item.version} in ${item.variant.color} frame with ${item.variant.lens} lenses.`;
+  return description;
 }
 
 export default async function HomePage() {
@@ -51,12 +53,12 @@ export default async function HomePage() {
       "@type": "ListItem",
       position: index + 1,
       url: `https://antiparamanila.store/ai-glasses/${item.variant.slug}`,
-      description: stripHtml(item.description),
       item: {
         "@type": "Product",
         name: `${item.brand} ${item.name} ${item.variant.color} ${item.variant.lens}`,
         brand: { "@type": "Brand", name: item.brand },
         image: item.variant.images.map((img: any) => img.url),
+        description: generateDescription(item.description),
         offers: {
           "@type": "Offer",
           priceCurrency: "PHP",
