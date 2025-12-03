@@ -18,6 +18,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning={true}>
+      <link rel="icon" href="/Antipara.ico" type="image/x-icon" />
+
       <body>
         (
         <>
