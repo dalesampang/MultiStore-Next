@@ -1,25 +1,46 @@
 import ShopWithoutSidebar from "@/components/ShopWithoutSidebar";
-export async function generateMetadata() {
-  return {
-    title: "Smart Glasses Collection | Antipara Manila",
+import { Product } from "@/types/model";
+
+export const metadata = {
+  title: "Antipara Manila | #1 Seller of Smart Glasses in the Philippines",
+  description:
+    "Shop Antipara Manila — the leading destination for smart glasses in the Philippines. Discover AI-powered eyewear with Meta AI, 3K capture, and hands-free communication.",
+  keywords: [
+    "Antipara Manila",
+    "smart glasses",
+    "Philippines",
+    "Meta AI eyewear",
+  ],
+  alternates: { canonical: "https://antiparamanila.store/" },
+  openGraph: {
+    url: "https://antiparamanila.store",
+    type: "website",
+    title: "Antipara Manila | Smart Glasses",
     description:
-      "Browse Antipara Manila’s full collection of smart glasses. Compare features, styles, and prices.",
-    keywords: [
-      "smart glasses collection",
-      "Antipara Manila products",
-      "Oakley Meta Glasses",
-      "Rayban Meta Glasses",
-      "Philippines eyewear",
+      "Antipara Manila is the #1 seller of smart glasses in the Philippines.",
+    images: [
+      {
+        url: "https://res.cloudinary.com/djws2m6eo/image/upload/v1764691334/Antipara_sev4da.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Antipara Manila Smart Glasses",
+      },
     ],
-    alternates: { canonical: "https://antiparamanila.com/ai-glasses" },
-    openGraph: {
-      title: "Smart Glasses Collection",
-      description: "Explore Antipara Manila’s smart glasses lineup.",
-      images: [
-        "https://res.cloudinary.com/djws2m6eo/image/upload/v1764594043/meta_glasses_preview_cxosjk.webp",
-      ],
-    },
-  };
+  },
+};
+async function getProducts() {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/data`,
+    {
+      cache: "no-store",
+    }
+  );
+  if (!res.ok) throw new Error("Failed to fetch products");
+  return res.json();
+}
+function generateDescription(item: Product): string {
+  const description = `Buy ${item.brand} ${item.name} ${item.version} in ${item.variant.color} frame with ${item.variant.lens} lenses.`;
+  return description;
 }
 
 export default async function Products({ searchParams }) {
@@ -33,13 +54,40 @@ export default async function Products({ searchParams }) {
   );
 
   const products = await res.json();
-
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: products.map((item: any, index: number) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Product",
+        name: `${item.brand} ${item.name} ${item.variant.color} ${item.variant.lens} ${item.version}`,
+        brand: { "@type": "Brand", name: item.brand },
+        image: item.variant.images.map((img: any) => img.url),
+        description: generateDescription(item),
+        offers: {
+          "@type": "Offer",
+          priceCurrency: "PHP",
+          price: item.variant.price,
+          availability: "http://schema.org/InStock",
+          url: `https://antiparamanila.store/ai-glasses/${item.variant.slug}`,
+        },
+      },
+    })),
+  };
   return (
-    <ShopWithoutSidebar
-      page="ai-glasses"
-      title="Ai Glasses"
-      slug=""
-      data={products}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <ShopWithoutSidebar
+        page="ai-glasses"
+        title="Ai Glasses"
+        slug=""
+        data={products}
+      />
+    </>
   );
 }
