@@ -51,12 +51,12 @@ export default async function HomePage() {
       "@type": "ListItem",
       position: index + 1,
       url: `https://antiparamanila.store/ai-glasses/${item.variant.slug}`,
+      description: stripHtml(item.description),
       item: {
         "@type": "Product",
         name: `${item.brand} ${item.name} ${item.variant.color} ${item.variant.lens}`,
         brand: { "@type": "Brand", name: item.brand },
         image: item.variant.images.map((img: any) => img.url),
-        description: stripHtml(item.description),
         offers: {
           "@type": "Offer",
           priceCurrency: "PHP",
