@@ -46,7 +46,7 @@ export default async function HomePage() {
     itemListElement: products.map((item: any, index: number) => ({
       "@type": "ListItem",
       position: index + 1,
-      url: `https://antiparamanila.store/ai-glasses/${item.variant.slug}`,
+      url: `https://antiparamanila.store/ai-glasses/${item.slug}`,
       name: `${item.brand} ${item.name} ${item.variant.color} ${item.variant.lens}`,
       item: {
         "@type": "Product",
@@ -58,7 +58,7 @@ export default async function HomePage() {
           "@type": "Offer",
           priceCurrency: "PHP",
           price: item.variant.price,
-          availability: "https://schema.org/InStock",
+          availability: "http://schema.org/InStock",
           url: `https://antiparamanila.store/ai-glasses/${item.variant.slug}`,
         },
       },
