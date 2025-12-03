@@ -46,8 +46,8 @@ export default async function HomePage() {
     itemListElement: products.map((item: any, index: number) => ({
       "@type": "ListItem",
       position: index + 1,
-      url: `https://antiparamanila.store/ai-glasses/${item.slug}`,
-      name: item.name,
+      url: `https://antiparamanila.store/ai-glasses/${item.variant.slug}`,
+      name: `${item.brand} ${item.name} ${item.variant.color} ${item.variant.lens}`,
       item: {
         "@type": "Product",
         name: `${item.brand} ${item.name} ${item.variant.color} ${item.variant.lens}`,
