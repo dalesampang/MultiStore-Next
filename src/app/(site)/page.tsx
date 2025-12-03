@@ -54,7 +54,7 @@ export default async function HomePage() {
       position: index + 1,
       item: {
         "@type": "Product",
-        name: `${item.brand} ${item.name} ${item.variant.color} ${item.variant.lens}`,
+        name: `${item.brand} ${item.name} ${item.variant.color} ${item.variant.lens} ${item.version}`,
         brand: { "@type": "Brand", name: item.brand },
         image: item.variant.images.map((img: any) => img.url),
         description: generateDescription(item),
