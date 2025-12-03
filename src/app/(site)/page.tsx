@@ -52,6 +52,8 @@ export default async function HomePage() {
         "@type": "Product",
         name: item.name,
         brand: { "@type": "Brand", name: item.brand },
+        image: item.variant.images.map((img: any) => img.url),
+        description: item.description,
         offers: {
           "@type": "Offer",
           priceCurrency: "PHP",
