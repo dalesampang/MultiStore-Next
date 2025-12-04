@@ -4,18 +4,22 @@ export async function generateMetadata() {
   return {
     title: "Smart Glasses Collection | Antipara Manila",
     description:
-      "Browse Antipara Manila’s full collection of smart glasses. Compare features, styles, and prices.",
+      "Shop Ray-Ban Meta Gen 1 & Gen 2, Oakley Meta HSTN, and Oakley Meta Vanguard at Antipara Manila — the #1 smart glasses store in the Philippines.",
     keywords: [
-      "smart glasses collection",
-      "Antipara Manila products",
-      "Oakley Meta Glasses",
-      "Rayban Meta Glasses",
-      "Philippines eyewear",
+      "Antipara Manila",
+      "smart glasses",
+      "Philippines",
+      "Meta AI eyewear",
+      "Ray-Ban Meta Gen 1",
+      "Ray-Ban Meta Gen 2",
+      "Oakley Meta HSTN",
+      "Oakley Meta Vanguard",
     ],
     alternates: { canonical: "https://antiparamanila.com/ai-glasses" },
     openGraph: {
       title: "Smart Glasses Collection",
-      description: "Explore Antipara Manila’s smart glasses lineup.",
+      description:
+        "Discover Ray-Ban Meta Gen 1 & Gen 2, Oakley Meta HSTN, and Oakley Meta Vanguard smart glasses at Antipara Manila.",
       images: [
         "https://res.cloudinary.com/djws2m6eo/image/upload/v1764594043/meta_glasses_preview_cxosjk.webp",
       ],

@@ -4,12 +4,16 @@ import { Product } from "@/types/model";
 export const metadata = {
   title: "Antipara Manila | #1 Seller of Smart Glasses in the Philippines",
   description:
-    "Shop Antipara Manila — the leading destination for smart glasses in the Philippines. Discover AI-powered eyewear with Meta AI, 3K capture, and hands-free communication.",
+    "Shop Ray-Ban Meta Gen 1 & Gen 2, Oakley Meta HSTN, and Oakley Meta Vanguard at Antipara Manila — the #1 smart glasses store in the Philippines.",
   keywords: [
     "Antipara Manila",
     "smart glasses",
     "Philippines",
     "Meta AI eyewear",
+    "Ray-Ban Meta Gen 1",
+    "Ray-Ban Meta Gen 2",
+    "Oakley Meta HSTN",
+    "Oakley Meta Vanguard",
   ],
   alternates: { canonical: "https://antiparamanila.store/" },
   openGraph: {
@@ -17,7 +21,7 @@ export const metadata = {
     type: "website",
     title: "Antipara Manila | Smart Glasses",
     description:
-      "Antipara Manila is the #1 seller of smart glasses in the Philippines.",
+      "Discover Ray-Ban Meta Gen 1 & Gen 2, Oakley Meta HSTN, and Oakley Meta Vanguard smart glasses at Antipara Manila.",
     images: [
       {
         url: "https://res.cloudinary.com/djws2m6eo/image/upload/v1764691334/Antipara_sev4da.jpg",
@@ -28,16 +32,7 @@ export const metadata = {
     ],
   },
 };
-async function getProducts() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/data`,
-    {
-      cache: "no-store",
-    }
-  );
-  if (!res.ok) throw new Error("Failed to fetch products");
-  return res.json();
-}
+
 function generateDescription(item: Product): string {
   const description = `Buy ${item.brand} ${item.name} ${item.version} in ${item.variant.color} frame with ${item.variant.lens} lenses.`;
   return description;

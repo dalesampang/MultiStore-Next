@@ -28,17 +28,21 @@ export async function generateMetadata({ params }: ProductPageProps) {
       variant.lens +
       " | SmartGlasses Philippines",
     description: product.description,
-    keywords:
-      product.brand +
-      "," +
-      product.name +
-      "," +
-      variant.color +
-      "," +
-      variant.lens +
-      "," +
-      product.version +
-      ",Meta AI,smart glasses, Philippines",
+    keywords: [
+      product.brand,
+      product.name,
+      variant.color,
+      variant.lens,
+      product.version,
+      "Antipara Manila",
+      "smart glasses",
+      "Philippines",
+      "Meta AI eyewear",
+      "Ray-Ban Meta Gen 1",
+      "Ray-Ban Meta Gen 2",
+      "Oakley Meta HSTN",
+      "Oakley Meta Vanguard",
+    ],
     alternates: {
       canonical: "https://antiparamanila.store/ai-glasses/" + variant.slug,
     },
