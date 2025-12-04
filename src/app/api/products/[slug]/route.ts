@@ -32,12 +32,17 @@ export async function GET(
           include: {
             category: true,
             seoSettings: true,
-            variants: { orderBy: { price: "desc" }, include: { images: true } },
+            variants: {
+              orderBy: { price: "desc" },
+              include: { images: { orderBy: { sort: "asc" } } },
+            },
             features: true,
             specGroups: { include: { specs: true } },
           },
         },
-        images: true,
+        images: {
+          orderBy: { sort: "asc" },
+        },
       },
     });
 
