@@ -23,7 +23,6 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       </head>
       <body>
-        (
         <>
           <Header />
           {children}
@@ -31,7 +30,6 @@ export default function RootLayout({
           <Footer />
           <Analytics />
         </>
-        )
       </body>
     </html>
   );
