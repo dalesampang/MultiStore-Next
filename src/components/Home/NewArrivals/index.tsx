@@ -15,7 +15,6 @@ const NewArrival = () => {
         setLoading(false);
       });
   }, []);
-  console.log("Expanded Data:", products);
 
   return (
     <section className="overflow-hidden pt-15">
