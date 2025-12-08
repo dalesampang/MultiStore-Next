@@ -4,7 +4,7 @@ export async function generateMetadata() {
   return {
     title: "Smart Glasses Collection | Antipara Manila",
     description:
-      "Shop Ray-Ban Meta Gen 1 & Gen 2, Oakley Meta HSTN, and Oakley Meta Vanguard at Antipara Manila — the #1 smart glasses store in the Philippines.",
+      "Shop Ray-Ban Meta Gen 1 & Gen 2, Oakley Meta HSTN, and Oakley Meta Vanguard at Antipara Manila — the trusted smart glasses store in the Philippines.",
     keywords: [
       "Antipara Manila",
       "smart glasses",
