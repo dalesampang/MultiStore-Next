@@ -260,7 +260,6 @@ export default function ProductDetails({
             name: product.name,
             image: product.baseImage,
             description: product.description,
-            sku: selectedVariant.slug,
             brand: { "@type": "Brand", name: "Antipara Manila" },
             offers: {
               "@type": "Offer",
