@@ -1,15 +1,15 @@
 "use client";
 
 export default function OrderNowButton({ slug }) {
-  const pageUsername = "jglarin"; // your FB Page username
+  const pageUsername = "antiparamanila"; // your FB Page username
   const productUrl = `https://antiparamanila.store/ai-glasses/${slug}?ref=messenger`;
   const templateMessage = `Hi Antipara Manila, I'm interested in ordering ${productUrl}`;
 
-  const messengerUrl = `https://m.me/${pageUsername}?text=${encodeURIComponent(
-    templateMessage
-  )}`;
+  // const messengerUrl = `https://m.me/${pageUsername}?text=${encodeURIComponent(
+  //   templateMessage
+  // )}`;
 
-  // const instagramUrl = `https://www.instagram.com/${pageUsername}/`;
+  const instagramUrl = `https://www.instagram.com/${pageUsername}/`;
 
   const handleClick = () => {
     // ✅ Fire GA4 event
@@ -22,7 +22,7 @@ export default function OrderNowButton({ slug }) {
 
   return (
     <a
-      href={messengerUrl}
+      href={instagramUrl}
       target="_blank"
       rel="noopener noreferrer"
       onClick={handleClick}
