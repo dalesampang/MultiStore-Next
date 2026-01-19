@@ -68,7 +68,7 @@ const Footer = () => {
             {/* <!-- Social Links start --> */}
             <div className="flex items-center gap-4 mt-7.5">
               <a
-                href="https://www.facebook.com/antiparamanila"
+                href="https://www.facebook.com/61586620292239"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue hover:opacity-80"
