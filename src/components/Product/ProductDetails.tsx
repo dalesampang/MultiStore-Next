@@ -32,7 +32,7 @@ export default function ProductDetails({
   const [selectedVariant, setSelectedVariant] = useState(variant);
   const decoded = useMemo(
     () => decodeHtmlEntities(product.description),
-    [product.description]
+    [product.description],
   );
   useEffect(() => {
     if (selectedVariant.images?.length) {
@@ -49,7 +49,7 @@ export default function ProductDetails({
     });
   }, [selectedVariant]);
   const previewImage = selectedVariant.images?.find(
-    (img) => img.id === previewImg
+    (img) => img.id === previewImg,
   );
   const handleVariantClick = (variant: Variant) => {
     setSelectedVariant(variant);
@@ -260,7 +260,7 @@ export default function ProductDetails({
             name: product.name,
             image: product.baseImage,
             description: product.description,
-            brand: { "@type": "Brand", name: "Antipara Manila" },
+            brand: { "@type": "Brand", name: "Antipara MNL" },
             offers: {
               "@type": "Offer",
               url: `https://antiparamanila.store/ai-glasses/${selectedVariant.slug}`,

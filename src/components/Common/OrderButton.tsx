@@ -3,7 +3,7 @@
 export default function OrderNowButton({ slug }) {
   const pageUsername = "61586620292239"; // your FB Page username
   const productUrl = `https://antiparamanila.store/ai-glasses/${slug}?ref=messenger`;
-  const templateMessage = `Hi Antipara Manila, I'm interested in ordering ${productUrl}`;
+  const templateMessage = `Hi Antipara MNL, I'm interested in ordering ${productUrl}`;
 
   const messengerUrl = `https://m.me/${pageUsername}?text=${encodeURIComponent(
     templateMessage,

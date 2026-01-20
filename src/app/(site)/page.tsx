@@ -3,11 +3,11 @@ import { Product } from "@/types/model";
 import { convert } from "html-to-text";
 
 export const metadata = {
-  title: "Antipara Manila | Trusted Seller of Smart Glasses in the Philippines",
+  title: "Antipara MNL | Trusted Seller of Smart Glasses in the Philippines",
   description:
-    "Shop Ray-Ban Meta Gen 1 & Gen 2, Oakley Meta HSTN, and Oakley Meta Vanguard at Antipara Manila — the trusted smart glasses store in the Philippines.",
+    "Shop Ray-Ban Meta Gen 1 & Gen 2, Oakley Meta HSTN, and Oakley Meta Vanguard at Antipara MNL — the trusted smart glasses store in the Philippines.",
   keywords: [
-    "Antipara Manila",
+    "Antipara MNL",
     "smart glasses",
     "Philippines",
     "Meta AI eyewear",
@@ -38,7 +38,7 @@ async function getProducts() {
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/data`,
     {
       cache: "no-store",
-    }
+    },
   );
   if (!res.ok) throw new Error("Failed to fetch products");
   return res.json();

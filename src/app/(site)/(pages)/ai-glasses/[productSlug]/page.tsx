@@ -8,7 +8,7 @@ export async function generateMetadata({ params }: ProductPageProps) {
 
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${productSlug}`,
-    { cache: "no-store" }
+    { cache: "no-store" },
   );
 
   if (!res.ok) return {};
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: ProductPageProps) {
       variant.color,
       variant.lens,
       product.version,
-      "Antipara Manila",
+      "Antipara MNL",
       "smart glasses",
       "Philippines",
       "Meta AI eyewear",
