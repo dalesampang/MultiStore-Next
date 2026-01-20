@@ -52,9 +52,8 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed left-0 top-0 w-full z-9999 bg-[#50abb1] transition-all ease-in-out duration-300 ${
-        stickyMenu && "shadow"
-      }`}>
+      className={`fixed left-0 top-0 w-full z-9999 [background-image:linear-gradient(to_bottom,#50acb1_0%,#50acb1_50%,#e16539_50%,#e16539_100%)] 
+ transition-all ease-in-out duration-300 ${stickyMenu && "shadow"}`}>
       <div className="max-w-[1170px] mx-auto px-4 sm:px-7.5 xl:px-0">
         {/* <!-- header top start --> */}
         <div
@@ -65,16 +64,11 @@ const Header = () => {
           <div className="xl:w-auto flex-col lg:flex-row w-full flex lg:justify-between lg:items-center gap-5 lg:gap-10">
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-10 items-start sm:items-center">
               <Link className="hidden xl:flex flex-shrink-0" href="/">
-                <Image src="/Antipara.jpeg" alt="Logo" width={75} height={36} />
+                <Image src="/new-mnl.png" alt="Logo" width={75} height={36} />
               </Link>
               <div className="flex xl:hidden  w-full lg:w-auto justify-between gap-2">
                 <Link className="flex-shrink-0" href="/">
-                  <Image
-                    src="/Antipara.jpeg"
-                    alt="Logo"
-                    width={75}
-                    height={36}
-                  />
+                  <Image src="/new-mnl.png" alt="Logo" width={75} height={36} />
                 </Link>
                 <div className=" flex items-center gap-3.5">
                   <svg
@@ -119,7 +113,7 @@ const Header = () => {
                     <FaFacebookF size={18} />
                   </a>
                   <a
-                    href="https://www.instagram.com/antiparamanila/"
+                    href="https://www.instagram.com/antiparamnl/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#E91E63] hover:opacity-80"
@@ -127,7 +121,7 @@ const Header = () => {
                     <FaInstagram size={18} />
                   </a>
                   <a
-                    href="https://www.tiktok.com/@antiparamanila"
+                    href="https://www.tiktok.com/@antiparamnl"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#000] hover:opacity-80"
@@ -217,7 +211,7 @@ const Header = () => {
             </div>
             <div className=" flex items-center gap-3.5">
               <a
-                href="https://www.facebook.com/antiparamanila"
+                href="https://www.facebook.com/61586620292239"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue hover:opacity-80"
@@ -225,7 +219,7 @@ const Header = () => {
                 <FaFacebookF size={18} />
               </a>
               <a
-                href="https://www.instagram.com/antiparamanila"
+                href="https://www.instagram.com/antiparamnl"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#E91E63] hover:opacity-80"
@@ -233,7 +227,7 @@ const Header = () => {
                 <FaInstagram size={18} />
               </a>
               <a
-                href="https://www.tiktok.com/@antiparamanila"
+                href="https://www.tiktok.com/@antiparamnl"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#000] hover:opacity-80"

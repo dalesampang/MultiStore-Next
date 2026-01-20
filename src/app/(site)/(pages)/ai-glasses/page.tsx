@@ -2,11 +2,11 @@ import ShopWithoutSidebar from "@/components/ShopWithoutSidebar";
 import { Product } from "@/types/model";
 
 export const metadata = {
-  title: "Antipara Manila | Trusted Seller of Smart Glasses in the Philippines",
+  title: "Antipara MNL | Trusted Seller of Smart Glasses in the Philippines",
   description:
-    "Shop Ray-Ban Meta Gen 1 & Gen 2, Oakley Meta HSTN, and Oakley Meta Vanguard at Antipara Manila — the trusted smart glasses store in the Philippines.",
+    "Shop Ray-Ban Meta Gen 1 & Gen 2, Oakley Meta HSTN, and Oakley Meta Vanguard at Antipara MNL — the trusted smart glasses store in the Philippines.",
   keywords: [
-    "Antipara Manila",
+    "Antipara MNL",
     "smart glasses",
     "Philippines",
     "Meta AI eyewear",
@@ -19,15 +19,15 @@ export const metadata = {
   openGraph: {
     url: "https://antiparamanila.store",
     type: "website",
-    title: "Antipara Manila | Smart Glasses",
+    title: "Antipara MNL | Smart Glasses",
     description:
-      "Discover Ray-Ban Meta Gen 1 & Gen 2, Oakley Meta HSTN, and Oakley Meta Vanguard smart glasses at Antipara Manila.",
+      "Discover Ray-Ban Meta Gen 1 & Gen 2, Oakley Meta HSTN, and Oakley Meta Vanguard smart glasses at Antipara MNL.",
     images: [
       {
         url: "https://res.cloudinary.com/djws2m6eo/image/upload/v1764691334/Antipara_sev4da.jpg",
         width: 1200,
         height: 630,
-        alt: "Antipara Manila Smart Glasses",
+        alt: "Antipara MNL Smart Glasses",
       },
     ],
   },
@@ -45,7 +45,7 @@ export default async function Products({ searchParams }) {
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/data?q=${encodeURIComponent(query)}`,
     {
       cache: "no-store", // ensures fresh data
-    }
+    },
   );
 
   const products = await res.json();
